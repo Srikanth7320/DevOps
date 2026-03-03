@@ -11,7 +11,6 @@ __pycache__/
 
 # --- Data ---
 # Do not commit your actual PDFs or databases
-data/
 *.pdf
 faiss_index/
 chroma_db/
