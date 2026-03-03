@@ -90,6 +90,21 @@ else:
     rag_chain = None
     print("⚠️ Warning: No PDFs found in /data folder.")
 
+@app.route('/info', methods=['GET'])
+def info():
+    try:
+        if not os.path.exists("data"):
+            return jsonify({"message": "No data folder found."})
+            
+        files = [f for f in os.listdir("data") if f.endswith('.pdf')]
+        
+        if not files:
+            return jsonify({"message": "I only answer based on the provided documents."})
+            
+        file_list = ", ".join(files)
+        return jsonify({"message": f"I am an expert on the following documents: {file_list}"})
+    except Exception as e:
+        return jsonify({"message": "I only answer based on the provided documents."})
 @app.route('/ask', methods=['POST'])
 def ask():
     if not rag_chain:
@@ -101,20 +116,6 @@ def ask():
         return jsonify({"answer": response})
     except Exception as e:
         return jsonify({"answer": f"API Error: {str(e)}"}), 500
-# --- ADD THIS RIGHT BELOW YOUR /ask ROUTE ---
-@app.route('/info', methods=['GET'])
-def get_info():
-    # Look at the files in the data folder
-    try:
-        files = [f for f in os.listdir("data") if f.endswith('.pdf')]
-        if not files:
-            return jsonify({"message": "No PDFs loaded yet."})
-        
-        # Join the file names into a nice readable string
-        file_names = ", ".join(files)
-        return jsonify({"message": f"I am an expert on the following documents: {file_names}"})
-    except Exception as e:
-        return jsonify({"message": "I only answer based on the provided documents."})
 
 if __name__ == "__main__":
     app.run(port=5000)
