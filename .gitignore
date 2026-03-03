@@ -1,0 +1,30 @@
+# --- Environment Variables ---
+# NEVER COMMIT YOUR API KEYS!
+.env
+
+# --- Virtual Environments ---
+# Do not commit the heavy Python environment folder
+venv/
+env/
+.venv/
+__pycache__/
+
+# --- Data ---
+# Do not commit your actual PDFs or databases
+data/
+*.pdf
+faiss_index/
+chroma_db/
+*.sqlite3
+
+# --- IDEs & Editors ---
+# These are local settings created by VS Code, PyCharm, etc.
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# --- Streamlit ---
+# Streamlit creates local config files you don't need to share
+.streamlit/

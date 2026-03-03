@@ -1,0 +1,20 @@
+# Web & API
+flask
+flask-cors
+requests
+python-dotenv
+streamlit
+
+# AI & Google Integration
+google-generativeai
+langchain-google-genai
+
+# LangChain Core & Community (The "New" Way)
+langchain
+langchain-community
+langchain-core
+langchain-text-splitters
+
+# Data & Vector Storage
+pypdf
+chromadb
