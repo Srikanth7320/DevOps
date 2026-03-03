@@ -33,7 +33,7 @@ if docs:
         print("Limiting to 5 pages for faster testing based on your 1k TPM limit...")
         docs = docs[:5]
 
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=100)
     chunks = text_splitter.split_documents(docs)
     print(f"Total chunks to process: {len(chunks)}")
     
@@ -61,7 +61,7 @@ if docs:
             
     print("--- UPLOAD COMPLETE ---\n")
 
-    retriever = vector_store.as_retriever(search_kwargs={"k": 1})
+    retriever = vector_store.as_retriever(search_kwargs={"k": 3})
 
     template = """
     You are a helpful, polite PDF assistant. 
